@@ -17,14 +17,14 @@
         vidptr[j] = ' ';
         // attribute byte to light gray
         vidptr[j + 1] = 0x07;
-        j = j + 2;
+    j = j + 2;
      }
 
      j = 0;
 
      /*
       * Write Strings to video memory
-      */
+*/
     while(str[j] != '\0') {
         // set the cahr to show
         vidptr[i] = str[j];
