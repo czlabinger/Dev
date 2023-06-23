@@ -1,14 +1,17 @@
 use ring::digest;
 
+#[derive(Debug)]
 pub struct PasswordEntry {
     username: String,
     password: String,
     service: String,
 }
 
+#[derive(Debug)]
 pub struct PasswordStore {
     passwords: Vec<PasswordEntry>,
 }
+
 
 impl PasswordEntry {
     pub fn new(uname: String, pass: String, ser: String) -> Self {
@@ -37,17 +40,8 @@ impl PasswordStore {
         }
     }
 
-    pub fn add_entry(&mut self, e: PasswordEntry) -> bool {
-        let result = self.passwords.push(e);
-        
-        match result {
-            Ok(()) => {
-                true
-            },
-            Err(err) => {
-                false
-            },
-        }
+    pub fn add_entry(&mut self, e: PasswordEntry) {
+        self.passwords.push(e); 
     }
 
     pub fn read(serv: String) -> PasswordEntry {
